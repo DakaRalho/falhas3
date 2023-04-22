@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Falhas</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>RPG</h1>
+	<canvas id="d20" width="200" height="200"></canvas>
+</body>
+</html>
+
+canvas {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+const d20 = document.getElementById("d20");
+const ctx = d20.getContext("2d");
+const colors = ["#ffffff", "#000000", "#ff0000", "#008000", "#0000ff", "#800080"];
+
+function drawD20() {
+	ctx.clearRect(0, 0, d20.width, d20.height);
+	ctx.beginPath();
+	ctx.arc(100, 100, 80, 0, 2 * Math.PI);
+	ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+	ctx.fill();
+	ctx.fillStyle = "#ffffff";
+	ctx.font = "bold 60px sans-serif";
+	ctx.textAlign = "center";
+	ctx.fillText(Math.floor(Math.random() * 20) + 1, 100, 125);
+}
+
+function animateD20() {
+	let start = null;
+	function step(timestamp) {
+		if (!start) start = timestamp;
+		let progress = timestamp - start;
+		if (progress > 500) {
+			drawD20();
+			start = timestamp;
+		}
+		requestAnimationFrame(step);
+	}
+	requestAnimationFrame(step);
+}
+
+function criarFicha(nome, classe, nivel, raca, pontosVida, pontosMana) {
+	let ficha = document.createElement("div");
+	ficha.classList.add("ficha");
+
+	let cabecalho = document.createElement("div");
+	cabecalho.classList.add("cabecalho");
+
+	let nomeElement = document.createElement("h2");
+	nomeElement.textContent = nome;
+	cabecalho.appendChild(nomeElement);
+
+	let classeElement = document.createElement("p");
+	classeElement.textContent = `Classe: ${classe}`;
+	cabecalho.appendChild(classeElement);
+
+	let nivelElement = document.createElement("p");
+	nivelElement.textContent = `Nível: ${nivel}`;
+	cabecalho.appendChild(nivelElement);
+
+	let racaElement = document.createElement("p");
+	racaElement.textContent = `Raça: ${raca}`;
+	cabecalho.appendChild(racaElement);
+
+	ficha.appendChild(cabecalho);
+
+	let pontosVidaElement = document.createElement("p");
+	pontosVidaElement.textContent = `Pontos de Vida: ${pontosVida}`;
+	ficha.appendChild(pontosVidaElement);
+
+	let pontosManaElement = document.createElement("p");
+	pontosManaElement.textContent = `Pontos de Mana: ${pontosMana}`;
+	ficha.appendChild(pontosManaElement);
+
+	document.body.appendChild(ficha);
+}
+
+function compartilharCamera(usuario) {
+	let video = document.createElement("video");
+	video.autoplay =
+
+function compartilharCamera(usuario) {
+	let video = document.createElement("video");
+	video.autoplay = true;
+
+	navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+		.then(function(stream) {
+			video.srcObject = stream;
+		})
+		.catch(function(error) {
+			console.error(error);
+		});
+
+	let link = document.createElement("a");
+	link.href = window.URL.createObjectURL(new MediaStream(video.srcObject));
+	link.download = `${usuario}.webm`;
+
+	let botao = document.createElement("button");
+	botao.textContent = "Compartilhar Câmera";
+	botao.addEventListener("click", function() {
+		video.play();
+		setTimeout(function() {
+			let recorder = new MediaRecorder(video.srcObject);
+			recorder.ondataavailable = function(event) {
+				link.href = window.URL.createObjectURL(event.data);
+				link.click();
+			}
+			recorder.start();
+			setTimeout(function() {
+				recorder.stop();
+				video.pause();
+			}, 5000);
+		}, 1000);
+	});
+
+	let div = document.createElement("div");
+	div.appendChild(botao);
+	div.appendChild(link);
+
+	document.body.appendChild(div);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Falhas</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="ficha.js"></script>
+</head>
+<body>
+	<h1>RPG</h1>
+	<button onclick="criarFicha('John Doe', 'Guerreiro', 5, 'Humano', 50, 0)">Criar Ficha</button>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Meu site</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="camera.js"></script>
+</head>
+<body>
+	<h1>Bem-vindo ao meu site!</h1>
+	<button onclick="compartilharCamera('Usuario1')">Compartilhar Câmera</button>
+</body>
+</html>
+
+.ficha {
+	border: 1px solid #000000;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.cabecalho {
+	margin-bottom: 10px;
+}
+
+.cabecalho h2 {
+	margin: 0;
+}
+
+.cabecalho p {
+	margin: 0;
+	font-style: italic;
+}
+
+function exibirPersonagem(usuario, personagem) {
+	let img = document.createElement("img");
+	img.src = personagem;
+	img.alt = usuario;
+
+	let span = document.createElement("span");
+	span.textContent = usuario;
+
+	let div = document.createElement("div");
+	div.appendChild(img);
+	div.appendChild(span);
+
+	document.body.appendChild(div);
+}
+
+<div class="camera">
+	<img class="personagem" src="avatar1.jpg" alt="Avatar">
+	<span class="nome">Jogador 1</span>
+	<video class="video" autoplay></video>
+</div>
+
+function rolarDado() {
+	let resultado = Math.floor(Math.random() * 20) + 1;
+
+	let img = document.createElement("img");
+	img.src = "d20.png";
+	img.alt = "d20";
+
+	let span = document.createElement("span");
+	if (resultado == 1) {
+		span.textContent = "Desastre";
+	} else if (resultado >= 2 && resultado <= 5) {
+		span.textContent = "Fracasso";
+	} else if (resultado >= 6 && resultado <= 10) {
+		span.textContent = "Normal";
+	} else if (resultado >= 11 && resultado <= 15) {
+		span.textContent = "Sucesso";
+	} else {
+		span.textContent = "Crítico";
+	}
+
+	let div = document.createElement("div");
+	div.appendChild(img);
+	div.appendChild(span);
+
+	document.body.appendChild(div);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Falhas</title>
+	<script src="rolagem.js"></script>
+</head>
+<body>
+	<h1>RPG</h1>
+	<button onclick="rolarDado()">Rolar Dado</button>
+</body>
+</html>
