@@ -1,256 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Falhas</title>
+	<title>falhas</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
-	<script src="ficha.js"></script>
-	<script src="camera.js"></script>
 </head>
 <body>
-	<h1>RPG</h1>
-	<button onclick="criarFicha('John Doe', 'Guerreiro', 5, 'Humano', 50, 0)">Criar Ficha</button>
-	<button onclick="compartilharCamera('Usuario1')">Compartilhar Câmera</button>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Sobre</a></li>
+				<li><a href="#">Contato</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<main>
+		<section>
+			<h1>Título da seção</h1>
+			<p>Texto da seção.</p>
+		</section>
+		
+		<section>
+			<h1>Título da outra seção</h1>
+			<p>Texto da outra seção.</p>
+		</section>
+	</main>
+	
+	<footer>
+		<p>Direitos reservados © 2023</p>
+	</footer>
 </body>
 </html>
 
-canvas {
-display: none;
-position: absolute;
-top: 0;
-left: 0;
+/* Estilos para o cabeçalho */
+header {
+	background-color: #f2f2f2;
+	padding: 20px;
 }
 
-.ficha {
-border: 1px solid #000000;
-padding: 10px;
-margin-bottom: 10px;
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
-.cabecalho {
-margin-bottom: 10px;
+nav li {
+	float: left;
 }
 
-.cabecalho h2 {
-margin: 0;
+nav li a {
+	display: block;
+	color: #333;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
-.cabecalho p {
-margin: 0;
-font-style: italic;
+nav li a:hover {
+	background-color: #ddd;
 }
 
-JavaScript:
-
-const d20 = document.getElementById("d20");
-const ctx = d20.getContext("2d");
-const colors = ["#ffffff", "#000000", "#ff0000", "#008000", "#0000ff", "#800080"];
-
-function drawD20() {
-ctx.clearRect(0, 0, d20.width, d20.height);
-ctx.beginPath();
-ctx.arc(100, 100, 80, 0, 2 * Math.PI);
-ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-ctx.fill();
-ctx.fillStyle = "#ffffff";
-ctx.font = "bold 60px sans-serif";
-ctx.textAlign = "center";
-ctx.fillText(Math.floor(Math.random() * 20) + 1, 100, 125);
+/* Estilos para as seções */
+section {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
 }
 
-function animateD20(timestamp) {
-let start = timestamp || null;
-if (!start) start = timestamp;
-let progress = timestamp - start;
-if (progress > 500) {
-drawD20();
-start = timestamp;
-}
-requestAnimationFrame(animateD20);
+section h1 {
+	font-size: 24px;
+	margin-top: 0;
 }
 
-requestAnimationFrame(animateD20);
-
-function criarFicha(nome, classe, nivel, raca, pontosVida, pontosMana) {
-let ficha = document.createElement("div");
-ficha.classList.add("ficha");
-
-let cabecalho = document.createElement("div");
-cabecalho.classList.add("cabecalho");
-
-let nomeElement = document.createElement("h2");
-nomeElement.textContent = nome;
-cabecalho.appendChild(nomeElement);
-
-let classeElement = document.createElement("p");
-classeElement.textContent = `Classe: ${classe}`;
-cabecalho.appendChild(classeElement);
-
-let nivelElement = document.createElement("p");
-nivelElement.textContent = `Nível: ${nivel}`;
-cabecalho.appendChild(nivelElement);
-
-let racaElement = document.createElement("p");
-racaElement.textContent = `Raça: ${raca}`;
-cabecalho.appendChild(racaElement);
-
-ficha.appendChild(cabecalho);
-
-let pontosVidaElement = document.createElement("p");
-pontosVidaElement.textContent = `Pontos de Vida: ${pontosVida}`;
-ficha.appendChild(pontosVidaElement);
-
-let pontosManaElement = document.createElement("p");
-pontosManaElement.textContent = `Pontos de Mana: ${pontosMana}`;
-ficha.appendChild(pontosManaElement);
-
-document.body.appendChild(ficha);
-
-}
-
-function compartilharCamera(usuario) {
-let video = document.createElement("video");
-video.autoplay = true
-function compartilharCamera(usuario) {
-let video = document.createElement("video");
-video.autoplay = true;
-
-navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-	.then(function(stream) {
-		video.srcObject = stream;
-	})
-	.catch(function(error) {
-		console.error(error);
-	});
-
-let link = document.createElement("a");
-link.href = "#";
-link.download = `${usuario}.webm`;
-
-let botao = document.createElement("button");
-botao.textContent = "Compartilhar Câmera";
-botao.addEventListener("click", function() {
-	video.play();
-	setTimeout(function() {
-		let recorder = new MediaRecorder(video.srcObject);
-		let chunks = [];
-		recorder.ondataavailable = function(event) {
-			chunks.push(event.data);
-		}
-		recorder.onstop = function(event) {
-			let blob = new Blob(chunks, { type: "video/webm" });
-			link.href = window.URL.createObjectURL(blob);
-			link.click();
-		}
-		recorder.start();
-		setTimeout(function() {
-			recorder.stop();
-			video.pause();
-		}, 5000);
-	}, 1000);
-});
-
-let div = document.createElement("div");
-div.appendChild(video);
-div.appendChild(botao);
-div.appendChild(link);
-
-document.body.appendChild(div);
-
-}
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Meu site</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="camera.js"></script>
-</head>
-<body>
-	<h1>Bem-vindo ao meu site!</h1>
-	<button onclick="compartilharCamera('Usuario1')">Compartilhar Câmera</button>
-</body>
-</html>
-.camera {
-position: relative;
-width: 320px;
-height: 240px;
-}
-
-.camera video {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-
-.camera a {
-display: block;
-position: absolute;
-bottom: 10px;
-right: 10px;
-padding: 5px;
-background-color: #ffffff;
-border: 1px solid #000000;
-text-decoration: none;
-color: #000000;
-font-size: 12px;
-}
-
-.camera button {
-display: block;
-position: absolute;
-top: 10px;
-left: 10px;
-padding: 5px;
-background-color: #ffffff;
-border: 1px solid #000000;
-color: #000000;
-font-size: 12px;
-}
-
-function exibirPersonagem(usuario, personagem) {
-let img = document.createElement("img");
-img.src = personagem;
-img.alt = usuario;
-
-let span = document.createElement("span");
-span.textContent = usuario;
-
-let div = document.createElement("div");
-div.classList.add("personagem");
-div.appendChild(img);
-div.appendChild(span);
-
-document.body.appendChild(div);
-
-}
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Meu site</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="personagem.js"></script>
-</head>
-<body>
-	<h1>Bem-vindo ao meu site!</h1>
-	<button onclick="exibirPersonagem('Usuario1', 'avatar1.jpg')">Exibir Personagem</button>
-</body>
-</html>
-.personagem {
-border: 1px solid #000000;
-padding: 10px;
-margin-bottom: 10px;
-}
-
-.personagem img {
-max-width: 100%;
-}
-
-.personagem span {
-display: block;
-margin-top: 10px;
-font-style: italic;
+/* Estilos para o rodapé */
+footer {
+	background-color: #f2f2f2;
+	padding: 20px;
+	text-align: center;
 }
