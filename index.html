@@ -1,88 +1,581 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>falhas</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Minha Página de RPG</title>
+  <link rel="stylesheet" href="ficha.css">
+  <link rel="stylesheet" href="mestre.css">
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Sobre</a></li>
-				<li><a href="#">Contato</a></li>
-			</ul>
-		</nav>
-	</header>
+  <h1>Minha Página de RPG</h1>
+  <div class="ficha">
+    <!-- Inclua o código da ficha de RPG aqui -->
+	  
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ficha de RPG</title>
+  </head>
+  <body>
+    <h1>Ficha de Personagem</h1>
+    <form>
+      <label for="nome">Nome do Personagem:</label>
+      <input type="text" id="nome" name="nome"><br><br>
+      <label for="raça">Raça:</label>
+      <input type="text" id="raça" name="raça"><br><br>
+      <label for="classe">Classe:</label>
+      <input type="text" id="classe" name="classe"><br><br>
+      <label for="nex">Nex:</label>
+      <input type="number" id="nex" name="nex"><br><br>
+      <label for="forca">Força:</label>
+      <input type="number" id="forca" name="forca"><br><br>
+      <label for="agilidade">Agilidade:</label>
+      <input type="number" id="agilidade" name="agilidade"><br><br>
+      <label for="constituicao">Constituição:</label>
+      <input type="number" id="constituicao" name="constituicao"><br><br>
+      <label for="inteligencia">Inteligência:</label>
+      <input type="number" id="inteligencia" name="inteligencia"><br><br>
+      <button type="submit">Salvar Ficha</button>
+    </form>
+  </body>
+</html>
+
+/* Estilos básicos da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Estilos do formulário */
+form {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Estilos dos campos de formulário */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+	  
+  </div>
+  <div class="mestre">
+    <!-- Inclua o código do painel do mestre aqui -->
+	  <div id="mestre-panel">
+  <div id="players">
+    <h2>Players</h2>
+    <ul>
+      <li>Player 1</li>
+      <li>Player 2</li>
+      <li>Player 3</li>
+    </ul>
+  </div>
+  <div id="camera">
+    <h2>Camera</h2>
+    <div id="camera-feed"></div>
+  </div>
+  <div id="roll">
+    <h2>Roll</h2>
+    <button id="roll-button">Roll</button>
+    <div id="roll-result"></div>
+  </div>
+</div>
+
+	  
+	  /* Estilos básicos para o painel do mestre */
+.mestre {
+  background-color: #f2f2f2;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px;
+  width: 400px;
+}
+
+/* Estilos para o cabeçalho do painel */
+.mestre h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+/* Estilos para a seção de rolagem de dados */
+.mestre .dados {
+  margin-top: 20px;
+}
+
+/* Estilos para a seção de controle de personagens */
+.mestre .personagens {
+  margin-top: 20px;
+}
+
+/* Estilos para os botões de controle */
+.mestre button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Estilos para o formulário de adicionar personagem */
+.mestre form {
+  margin-top: 10px;
+}
+
+.mestre label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.mestre input[type=text] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 200px;
+}
+
+	  
+	  <div class="camera">
+  <img src="caminho/para/imagem-do-personagem1.png" alt="Personagem 1" class="personagem">
+  <span class="nome">Personagem 1</span>
+</div>
+<div class="camera">
+  <img src="caminho/para/imagem-do-personagem2.png" alt="Personagem 2" class="personagem">
+  <span class="nome">Personagem 2</span>
+</div>
+<!-- Adicione mais câmeras aqui, se necessário -->
+
+	  
+	  /* Estilos para as câmeras */
+.mestre .camera {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* Estilos para as imagens dos personagens */
+.mestre .personagem {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+}
+
+/* Estilos para os nomes dos personagens */
+.mestre .nome {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+	  
+	  <script>
+  // Seleciona todos os botões de trocar status
+  var trocarBotoes = document.querySelectorAll('.trocar-status');
+
+  // Para cada botão, adiciona um evento de clique
+  trocarBotoes.forEach(function(botao) {
+    botao.addEventListener('click', function() {
+      // Seleciona o elemento do número de status atual
+      var numeroStatus = this.parentElement.querySelector('.numero-status');
+
+      // Seleciona o elemento do nome do personagem
+      var nomePersonagem = this.parentElement.querySelector('.nome-personagem');
+
+      // Alterna a visibilidade dos elementos de nome e número de status
+      if (numeroStatus.style.display === 'none') {
+        numeroStatus.style.display = 'inline';
+        nomePersonagem.style.display = 'none';
+      } else {
+        numeroStatus.style.display = 'none';
+        nomePersonagem.style.display = 'inline';
+      }
+    });
+  });
+</script>
+
+	  
+	  <div class="status">
+  <div class="status-item">
+    <div class="status-label">PO</div>
+    <div class="status-input">
+      <input type="number" value="50" min="0" max="50">
+      <span>/</span>
+      <input type="number" value="50" min="0" max="50">
+    </div>
+  </div>
+  <div class="status-item">
+    <div class="status-label">PM</div>
+    <div class="status-input">
+      <input type="number" value="10" min="0" max="10">
+      <span>/</span>
+      <input type="number" value="10" min="0" max="10">
+    </div>
+  </div>
+  <div class="status-item">
+    <div class="status-label">PV</div>
+    <div class="status-input">
+      <input type="number" value="20" min="0" max="20">
+      <span>/</span>
+      <input type="number" value="20" min="0" max="20">
+    </div>
+  </div>
+  <div class="status-item">
+    <div class="status-label">SAN</div>
+    <div class="status-input">
+      <input type="number" value="50" min="0" max="100">
+      <span>/</span>
+      <input type="number" value="100" min="0" max="100">
+    </div>
+  </div>
+</div>
+
+	  
+	  .status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+.status-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.status-input input {
+  width: 40px;
+  height: 25px;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.status-input input[type="number"]::-webkit-inner-spin-button,
+.status-input input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.status-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.status-input span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+  margin-left: 5px;
+}
+
+.status-item:nth-child(1) .status-label {
+  background-color: #7b1fa2;
+}
+
+.status-item:nth-child(1) .status-input input {
+  background-color: #7b1fa2;
+  color: #fff;
+ 
+
+	  
+	  <button onclick="incrementar('po')">+1</button>
+<button onclick="decrementar('po')">-1</button>
+<span id="po-status">0/10</span>
+
+	  
+	  function incrementar(status) {
+  var statusElement = document.getElementById(status + "-status");
+  var statusValue = statusElement.innerHTML.split("/")[0];
+  var maxValue = statusElement.innerHTML.split("/")[1];
+  statusValue++;
+  if (statusValue > maxValue) {
+    statusValue = maxValue;
+  }
+  statusElement.innerHTML = statusValue + "/" + maxValue;
+}
+
+function decrementar(status) {
+  var statusElement = document.getElementById(status + "-status");
+  var statusValue = statusElement.innerHTML.split("/")[0];
+  var maxValue = statusElement.innerHTML.split("/")[1];
+  statusValue--;
+  if (statusValue < 0) {
+    statusValue = 0;
+  }
+  statusElement.innerHTML = statusValue + "/" + maxValue;
+}
+
+		      
+		      <button onclick="incrementar('po', 'personagem1')">+1</button>
+<button onclick="decrementar('po', 'personagem1')">-1</button>
+<span id="po-status-personagem1">0/10</span>
+
+<button onclick="incrementar('po', 'personagem2')">+1</button>
+<button onclick="decrementar('po', 'personagem2')">-1</button>
+<span id="po-status-personagem2">0/10</span>
+
 	
-	<main>
-		<section>
-			<h1>Título da seção</h1>
-			<p>Texto da seção.</p>
-		</section>
-		
-		<section>
-			<h1>Título da outra seção</h1>
-			<p>Texto da outra seção.</p>
-		</section>
-	</main>
+	<!-- Personagem 1 -->
+<div class="status">
+  <div class="status-label">PO</div>
+  <div class="status-value po personagem1">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">PM</div>
+  <div class="status-value pm personagem1">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">PV</div>
+  <div class="status-value pv personagem1">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">SAN</div>
+  <div class="status-value san personagem1">0/10</div>
+</div>
+
+<!-- Personagem 2 -->
+<div class="status">
+  <div class="status-label">PO</div>
+  <div class="status-value po personagem2">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">PM</div>
+  <div class="status-value pm personagem2">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">PV</div>
+  <div class="status-value pv personagem2">0/10</div>
+</div>
+<div class="status">
+  <div class="status-label">SAN</div>
+  <div class="status-value san personagem2">0/10</div>
+</div>
+
 	
-	<footer>
-		<p>Direitos reservados © 2023</p>
-	</footer>
+	.status {
+  display: flex;
+  align-items: center;
+}
+
+.status-label {
+  margin-right: 10px;
+}
+
+.status-value {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.po {
+  background-color: purple;
+  color: white;
+}
+
+.pm {
+  background-color: white;
+  color: black;
+}
+
+.pv {
+  background-color: red;
+  color: white;
+}
+
+.san {
+  background-color: blue;
+  color: white;
+}
+
+.personagem1 .status-value {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.personagem2 .status-value {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+	
+	<div id="players">
+  <h2>Players:</h2>
+  <ul>
+    <li id="player1">
+      <div class="player-info">
+        <img src="player1.jpg" alt="Player 1">
+        <h3>Player 1</h3>
+      </div>
+      <div class="player-status">
+        <div class="status-bar po">
+          <div class="status-value" style="width: 50%;"></div>
+        </div>
+        <div class="status-bar pm">
+          <div class="status-value" style="width: 80%;"></div>
+        </div>
+        <div class="status-bar pv">
+          <div class="status-value" style="width: 30%;"></div>
+        </div>
+        <div class="status-bar san">
+          <div class="status-value" style="width: 70%;"></div>
+        </div>
+      </div>
+    </li>
+    <li id="player2">
+      <div class="player-info">
+        <img src="player2.jpg" alt="Player 2">
+        <h3>Player 2</h3>
+      </div>
+      <div class="player-status">
+        <div class="status-bar po">
+          <div class="status-value" style="width: 80%;"></div>
+        </div>
+        <div class="status-bar pm">
+          <div class="status-value" style="width: 60%;"></div>
+        </div>
+        <div class="status-bar pv">
+          <div class="status-value" style="width: 40%;"></div>
+        </div>
+        <div class="status-bar san">
+          <div class="status-value" style="width: 90%;"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+	
+	
+	<div class="character">
+  <img src="foto_personagem.jpg" alt="Foto do personagem">
+  <h2>Nome do personagem</h2>
+  <p class="status">50/50 PV</p>
+  <div class="dice">
+    <div class="d20">
+      <span class="result"></span>
+    </div>
+  </div>
+</div>
+
+	  
+  </div>
+  <script src="ficha.js"></script>
+  <script src="mestre.js"></script>
 </body>
 </html>
 
-/* Estilos para o cabeçalho */
-header {
-	background-color: #f2f2f2;
-	padding: 20px;
+
+
+.d20 {
+  width: 50px;
+  height: 50px;
+  position: relative;
 }
 
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
+.d20:before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FFF;
+  position: absolute;
+  z-index: 2;
 }
 
-nav li {
-	float: left;
+.d20:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
 }
 
-nav li a {
-	display: block;
-	color: #333;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+.result {
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-nav li a:hover {
-	background-color: #ddd;
+
+function rollD20() {
+  var result = Math.floor(Math.random() * 20) + 1;
+  var resultElement = document.querySelector(".result");
+  resultElement.innerHTML = result;
+  resultElement.style.opacity = 1;
+  var audio = new Audio("som_dado.mp3");
+  audio.play();
+  setTimeout(function() {
+    resultElement.style.opacity = 0;
+  }, 2000);
 }
 
-<link rel="stylesheet" type="text/css" href="style.css">
 
-
-/* Estilos para as seções */
-section {
-	background-color: #fff;
-	padding: 20px;
-	margin-bottom: 20px;
-	border: 1px solid #ddd;
-}
-
-section h1 {
-	font-size: 24px;
-	margin-top: 0;
-}
-
-/* Estilos para o rodapé */
-footer {
-	background-color: #f2f2f2;
-	padding: 20px;
-	text-align: center;
-}
+<button onclick="rollD20()">Rolar d20</button>
