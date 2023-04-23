@@ -622,3 +622,26 @@ function rollD20() {
   </div>
 </div>
 
+
+<button onclick="startWebcam()">Conectar Webcam</button>
+<div id="player-cam"></div>
+
+<script>
+  function startWebcam() {
+    // Obter permissão para acessar a câmera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        // Exibir o stream da webcam do jogador em um elemento de vídeo
+        var videoElement = document.createElement('video');
+        videoElement.autoplay = true;
+        videoElement.srcObject = stream;
+
+        // Adicionar o elemento de vídeo à div "player-cam"
+        var playerCam = document.getElementById('player-cam');
+        playerCam.appendChild(videoElement);
+      })
+      .catch(function(error) {
+        console.error('Ocorreu um erro ao tentar acessar a webcam: ', error);
+      });
+  }
+</script>
