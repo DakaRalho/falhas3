@@ -624,7 +624,12 @@ function rollD20() {
 
 
 <button onclick="startWebcam()">Conectar Webcam</button>
-<div id="player-cam"></div>
+<div id="player-cam">
+  <div id="personagem1">
+    <img src="imagem_personagem1.jpg">
+    <div class="camera"></div>
+  </div>
+</div>
 
 <script>
   function startWebcam() {
@@ -636,9 +641,9 @@ function rollD20() {
         videoElement.autoplay = true;
         videoElement.srcObject = stream;
 
-        // Adicionar o elemento de vídeo à div "player-cam"
-        var playerCam = document.getElementById('player-cam');
-        playerCam.appendChild(videoElement);
+        // Adicionar o elemento de vídeo à div "camera"
+        var cameraDiv = document.querySelector('#personagem1 .camera');
+        cameraDiv.appendChild(videoElement);
       })
       .catch(function(error) {
         console.error('Ocorreu um erro ao tentar acessar a webcam: ', error);
