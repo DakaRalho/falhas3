@@ -11,14 +11,17 @@
   <div class="ficha">
     <!-- Inclua o código da ficha de RPG aqui -->
 	  
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ficha de RPG</title>
-  </head>
-  <body>
-    <h1>Ficha de Personagem</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>RPG</title>
+  <link rel="stylesheet" href="ficha.css">
+  <link rel="stylesheet" href="mestre.css">
+</head>
+<body>
+  <h1>RPG</h1>
+  <div class="ficha">
     <form>
       <label for="nome">Nome do Personagem:</label>
       <input type="text" id="nome" name="nome"><br><br>
@@ -38,8 +41,31 @@
       <input type="number" id="inteligencia" name="inteligencia"><br><br>
       <button type="submit">Salvar Ficha</button>
     </form>
-  </body>
+  </div>
+  <div class="mestre">
+    <div id="mestre-panel">
+      <div id="players">
+        <h2>Players</h2>
+        <ul>
+          <li>Player 1</li>
+          <li>Player 2</li>
+          <li>Player 3</li>
+        </ul>
+      </div>
+      <div id="camera">
+        <h2>Camera</h2>
+        <div id="camera-feed"></div>
+      </div>
+      <div id="roll">
+        <h2>Roll</h2>
+        <button id="roll-button">Roll</button>
+        <div id="roll-result"></div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
+
 
 
 	 /* Estilos básicos da página */
